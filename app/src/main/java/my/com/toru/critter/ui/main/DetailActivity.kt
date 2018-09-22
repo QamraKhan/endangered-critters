@@ -16,14 +16,15 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         imageUrl = intent.getStringExtra("IMAGE_URL")
-        val imageView = findViewById<ImageView>(R.id.detail_img)
-        imageUrl = imageUrl.replace("\\","")
-        imageUrl = "http://$imageUrl"
-
-        Picasso.get()
-                .load(imageUrl)
-                .fit()
-                .into(imageView)
+        if(imageUrl.contains(".jpg")){
+            imageUrl = imageUrl.replace("\\","")
+            imageUrl = "http://$imageUrl"
+            val imageView = findViewById<ImageView>(R.id.detail_img)
+            Picasso.get()
+                    .load(imageUrl)
+                    .fit()
+                    .into(imageView)
+        }
     }
 
 //    private fun initStorage(){
