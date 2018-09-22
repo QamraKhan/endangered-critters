@@ -1,7 +1,6 @@
 ## import libaries
 import pandas as pd
 import numpy as np
-import cv2
 import os, sys
 from tqdm import tqdm
 import glob
