@@ -1,8 +1,10 @@
 package my.com.toru.critter.ui.main.list
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_item.*
 
 import my.com.toru.critter.R
 import my.com.toru.critter.model.Critter
+import my.com.toru.critter.ui.main.DetailActivity
 
 
 class ItemFragment() : Fragment() {
@@ -25,7 +28,8 @@ class ItemFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listAdapter = ListAdapter(ArrayList()) {
-            Toast.makeText(view.context, "Test!!", Toast.LENGTH_SHORT).show()
+            Log.i("ItemFragment", "i:: " + it.str)
+            activity?.startActivity(Intent(activity, DetailActivity::class.java))
         }
         item_rcv.apply {
             layoutManager = GridLayoutManager(view.context, 3)
@@ -35,7 +39,7 @@ class ItemFragment() : Fragment() {
         // mockup code
         val newList = ArrayList<Critter>()
         for(i in 0 until 30){
-            newList.add(Critter("1","a"))
+            newList.add(Critter(i.toString(),"a"))
         }
         // mockup code end
         listAdapter.addItem(newList)

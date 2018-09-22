@@ -1,11 +1,9 @@
 package my.com.toru.critter.ui.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.gms.maps.SupportMapFragment
 import my.com.toru.critter.R
 import my.com.toru.critter.ui.main.list.ItemFragment
 

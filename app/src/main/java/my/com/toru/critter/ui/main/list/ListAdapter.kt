@@ -9,11 +9,11 @@ import my.com.toru.critter.model.Critter
 import java.util.*
 
 class ListAdapter(private var critters: ArrayList<Critter>,
-                  private val clickCallback:()->Unit): RecyclerView.Adapter<ListVH>() {
+                  private val clickCallback:(Critter)->Unit): RecyclerView.Adapter<ListVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListVH {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_list, parent, false)
-        return ListVH(view)
+        return ListVH(view, clickCallback)
     }
 
     fun addItem(addedList:ArrayList<Critter>){
@@ -26,14 +26,14 @@ class ListAdapter(private var critters: ArrayList<Critter>,
     override fun onBindViewHolder(holder: ListVH, position: Int) {
         holder.apply {
             bindItem(critters[position])
-            itemView.setOnClickListener {
-                clickCallback()
-            }
         }
     }
 }
 
-class ListVH(view:View):RecyclerView.ViewHolder(view){
+class ListVH(view:View, val cb:(Critter)->Unit):RecyclerView.ViewHolder(view){
     fun bindItem(critter:Critter){
+        itemView.setOnClickListener {
+            cb(critter)
+        }
     }
 }
