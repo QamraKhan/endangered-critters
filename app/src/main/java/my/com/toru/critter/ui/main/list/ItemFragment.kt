@@ -10,10 +10,12 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_item.*
 
 import my.com.toru.critter.R
+import my.com.toru.critter.model.Critter
 
 
 class ItemFragment() : Fragment() {
 
+    private lateinit var listAdapter:ListAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -22,12 +24,21 @@ class ItemFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        listAdapter = ListAdapter(ArrayList()) {
+            Toast.makeText(view.context, "Test!!", Toast.LENGTH_SHORT).show()
+        }
         item_rcv.apply {
             layoutManager = GridLayoutManager(view.context, 3)
-            adapter = ListAdapter{
-                Toast.makeText(view.context, "Test!!", Toast.LENGTH_SHORT).show()
-            }
+            adapter = listAdapter
         }
+
+        // mockup code
+        val newList = ArrayList<Critter>()
+        for(i in 0 until 30){
+            newList.add(Critter("1","a"))
+        }
+        // mockup code end
+        listAdapter.addItem(newList)
     }
 
     companion object {

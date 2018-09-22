@@ -6,13 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import my.com.toru.critter.R
 import my.com.toru.critter.model.Critter
+import java.util.*
 
-class ListAdapter(private val clickCallback:()->Unit,
-                  private var critters:List<Critter>): RecyclerView.Adapter<ListVH>() {
+class ListAdapter(private var critters: ArrayList<Critter>,
+                  private val clickCallback:()->Unit): RecyclerView.Adapter<ListVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListVH {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_list, parent, false)
         return ListVH(view)
+    }
+
+    fun addItem(addedList:ArrayList<Critter>){
+        critters.addAll(addedList)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = critters.size
