@@ -5,14 +5,36 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 import my.com.toru.critter.R
 
 class DetailActivity : AppCompatActivity() {
-
+    private lateinit var imageUrl:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+        imageUrl = intent.getStringExtra("IMAGE_URL")
+        val imageView = findViewById<ImageView>(R.id.detail_img)
+        imageUrl = imageUrl.replace("\\","")
+        imageUrl = "http://$imageUrl"
+
+        Picasso.get()
+                .load(imageUrl)
+                .fit()
+                .into(imageView)
     }
+
+//    private fun initStorage(){
+//        val storageReference:StorageReference = FirebaseStorage.getInstance().getReference("photos")
+//        storageReference.child("$date-$time.jpg")
+//
+//        val imgView = findViewById<ImageView>(R.id.detail_img)
+//        Glide.with(this@DetailActivity /* context */)
+//                .load(storageReference)
+//                .into(imgView)
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)

@@ -7,13 +7,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import my.com.toru.critter.R
+import java.net.URL
 
 object GlideUtil {
     fun loadImage(url:String, imageView: ImageView){
         val ctx = imageView.context
         val cd = ColorDrawable(ContextCompat.getColor(ctx, R.color.background))
-        Glide.with(ctx)
-                .load(url)
+        GlideApp.with(ctx)
+                .load(URL(url))
                 .apply(RequestOptions().useAnimationPool(true)
                         .centerCrop())
                 .transition(DrawableTransitionOptions.withCrossFade())

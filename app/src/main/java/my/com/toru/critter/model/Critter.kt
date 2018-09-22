@@ -17,3 +17,9 @@ class CritterDB(){
     var date:String = ""
     var time:String = ""
 }
+
+data class CritterNewDB(@SerializedName("image_name") val imageName:String,
+                        @SerializedName("image_url") val imageUrl:String,
+                        val classification:String,
+                        val humidity:String,
+                        val temperature:String)

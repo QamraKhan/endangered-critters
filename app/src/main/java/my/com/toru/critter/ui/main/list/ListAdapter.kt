@@ -8,26 +8,32 @@ import kotlinx.android.synthetic.main.adapter_list.view.*
 import my.com.toru.critter.R
 import my.com.toru.critter.model.Critter
 import my.com.toru.critter.model.CritterDB
+import my.com.toru.critter.model.CritterNewDB
 import my.com.toru.critter.util.GlideUtil
 import java.util.*
 
-class ListAdapter(private var critters: ArrayList<CritterDB>,
-                  private val clickCallback:(CritterDB)->Unit): RecyclerView.Adapter<ListVH>() {
+class ListAdapter(private var critters: ArrayList<CritterNewDB>,
+                  private val clickCallback:(CritterNewDB)->Unit): RecyclerView.Adapter<ListVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListVH {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_list, parent, false)
         return ListVH(view, clickCallback)
     }
 
-    fun addItems(addedList:ArrayList<CritterDB>){
+    fun addItems2(addedList:ArrayList<CritterNewDB>){
         critters.addAll(addedList)
         notifyDataSetChanged()
     }
 
-    fun addItem(newData:CritterDB){
-        critters.add(newData)
-        notifyDataSetChanged()
-    }
+//    fun addItems(addedList:ArrayList<CritterDB>){
+//        critters.addAll(addedList)
+//        notifyDataSetChanged()
+//    }
+//
+//    fun addItem(newData:CritterDB){
+//        critters.add(newData)
+//        notifyDataSetChanged()
+//    }
 
     override fun getItemCount(): Int = critters.size
 
@@ -39,6 +45,6 @@ class ListAdapter(private var critters: ArrayList<CritterDB>,
     }
 }
 
-class ListVH(view:View, val cb:(CritterDB)->Unit):RecyclerView.ViewHolder(view){
+class ListVH(view:View, val cb:(CritterNewDB)->Unit):RecyclerView.ViewHolder(view){
     val imgView = view.img!!
 }

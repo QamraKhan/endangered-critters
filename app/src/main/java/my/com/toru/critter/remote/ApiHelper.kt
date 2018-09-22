@@ -2,10 +2,16 @@ package my.com.toru.critter.remote
 
 import android.util.Log
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import my.com.toru.critter.model.CritterNewDB
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Url
 import java.util.concurrent.TimeUnit
 
 /*
@@ -37,4 +43,16 @@ object ApiHelper {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }
+
+    fun getData(successCB:(ArrayList<CritterNewDB>)->Unit,
+                failedCB:()->Unit){
+        retrofit.create(CritterService::class.java)
+                .getCritters("http://35.229.42.247:5000/get_data")
+                .enqueue(AdvCallback(failedCB, successCB))
+    }
+}
+
+interface CritterService{
+    @GET
+    fun getCritters(@Url url:String): Call<ArrayList<CritterNewDB>>
 }
