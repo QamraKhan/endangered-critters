@@ -4,8 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.adapter_list.view.*
 import my.com.toru.critter.R
 import my.com.toru.critter.model.Critter
+import my.com.toru.critter.util.GlideUtil
 import java.util.*
 
 class ListAdapter(private var critters: ArrayList<Critter>,
@@ -25,15 +27,12 @@ class ListAdapter(private var critters: ArrayList<Critter>,
 
     override fun onBindViewHolder(holder: ListVH, position: Int) {
         holder.apply {
-            bindItem(critters[position])
+            GlideUtil.loadImage(critters[position].str2, imgView)
+            itemView.setOnClickListener { clickCallback(critters[position]) }
         }
     }
 }
 
 class ListVH(view:View, val cb:(Critter)->Unit):RecyclerView.ViewHolder(view){
-    fun bindItem(critter:Critter){
-        itemView.setOnClickListener {
-            cb(critter)
-        }
-    }
+    val imgView = view.img!!
 }

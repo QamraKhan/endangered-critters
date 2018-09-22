@@ -9,7 +9,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_outline_map_24px"
-        android:background="#dbe5d9"/>
+        android:src="@drawable/ic_outline_map_24px"/>
 
 </android.support.constraint.ConstraintLayout>

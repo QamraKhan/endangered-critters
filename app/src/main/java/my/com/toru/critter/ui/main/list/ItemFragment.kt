@@ -39,7 +39,7 @@ class ItemFragment() : Fragment() {
         // mockup code
         val newList = ArrayList<Critter>()
         for(i in 0 until 30){
-            newList.add(Critter(i.toString(),"a"))
+            newList.add(Critter(i.toString(),"https://image.11st.my/browsing/banner/2018/07/09/1001/2018070917300949537_7907289_2.png"))
         }
         // mockup code end
         listAdapter.addItem(newList)
