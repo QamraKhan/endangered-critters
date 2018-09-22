@@ -199,5 +199,4 @@ def predict(image_path):
     print (logreg.predict(test_x_bf)[0])
     return dogs_list[logreg.predict(test_x_bf)[0]]
 
-print (predict('abc.jpg'))
     
