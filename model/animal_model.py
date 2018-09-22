@@ -67,13 +67,15 @@ logreg = pickle.load(open('logreg_12_animal_danger.model', 'rb'))
 animals_list = ['buffalo',
  'chihuahua',
  'chimpanzee',
+ 'dugong',
  'elephant',
- 'giant+panda',
+ 'giant_panda',
  'grizzly+bear',
  'hippopotamus',
  'horse',
  'lion',
- 'tiger']
+ 'malayan_tiger',
+ 'orang_utan']
 
 
 def read_img(img_path,size):
