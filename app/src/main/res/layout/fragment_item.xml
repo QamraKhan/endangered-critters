@@ -10,6 +10,7 @@
         android:id="@+id/item_rcv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="12.3dp"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
-        app:spanCount="2"/>
+        app:spanCount="2" />
 </FrameLayout>
