@@ -28,6 +28,10 @@ def upload_file():
     animal = predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return animal
 
+@app.route("/imgs/<path:path>")
+def images(path):
+    return '35.229.42.247:5000'+url_for('static',filename=path+'.jpg')
+
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -36,4 +40,4 @@ def uploaded_file(filename):
 
 
 if __name__ == '__main__':
-    app.run(host='35.231.132.12')
+    app.run(host='0.0.0.0)
