@@ -4,8 +4,10 @@ from werkzeug.utils import secure_filename
 from flask import send_from_directory
 from animal_model import predict
 from flask import Flask, session
+from database_animal import get_data, add_data
+import ast
 
-UPLOAD_FOLDER = r'E:\ML\upload\uploads'
+UPLOAD_FOLDER = r'/home/anubhavlandmark/endangered-critters/model/static'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
@@ -26,17 +28,22 @@ def upload_file():
     filename = secure_filename(file.filename)
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     animal = predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    add_data(filename, '35.229.42.247:5000/static/' + filename, animal, '23', '34')
     return animal
 
 @app.route("/imgs/<path:path>")
 def images(path):
-    return '35.229.42.247:5000'+url_for('static',filename=path+'.jpg')
+    return '35.229.42.247:5000/static/' + filename
 
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
+
+@app.route("/get_data")
+def all_data():
+    return get_data()
 
 
 if __name__ == '__main__':
