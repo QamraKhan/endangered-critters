@@ -8,15 +8,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_item.*
-
 import my.com.toru.critter.R
 import my.com.toru.critter.model.Critter
 import my.com.toru.critter.ui.main.DetailActivity
 
+private const val URL = "https://crittercam-baa64.firebaseio.com/"
 
-class ItemFragment() : Fragment() {
+class ItemFragment : Fragment() {
 
     private lateinit var listAdapter:ListAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,16 @@ class ItemFragment() : Fragment() {
             layoutManager = GridLayoutManager(view.context, 3)
             adapter = listAdapter
         }
+
+
+//        val database = FirebaseDatabase.getInstance()
+//        val myRef = database.reference
+//        myRef.addValueEventListener(object:ValueEventListener{
+//            override fun onCancelled(err: DatabaseError) {}
+//
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {}
+//        })
+
 
         // mockup code
         val newList = ArrayList<Critter>()
