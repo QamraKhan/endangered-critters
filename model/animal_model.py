@@ -53,16 +53,16 @@ HEIGHT=400
 WIDTH=400
 VAL_SPLIT = 0.2 #Percentage of training examples used for validation
 
-json_file = open('model_10_animal.json', 'r')
+json_file = open('model_12_animal_danger.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 loaded_model._make_predict_function()
 # load weights into new model
-loaded_model.load_weights("model_10_animals.h5")
+loaded_model.load_weights("model_12_animal_danger.h5")
 print("Loaded model from disk")
 
-logreg = pickle.load(open('logreg_10_animals.model', 'rb'))
+logreg = pickle.load(open('logreg_12_animal_danger.model', 'rb'))
 
 animals_list = ['buffalo',
  'chihuahua',
