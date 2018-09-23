@@ -62,7 +62,7 @@ class DetailActivity : AppCompatActivity() {
                     number_txt.text = resources.getString(R.string.numbers_lion)
                 }
 
-                "panda"->{
+                "giant_panda"->{
                     species_des_txt.text = resources.getString(R.string.desc_panda)
                     conservation_status_txt.text = resources.getString(R.string.conservation_panda)
                     number_txt.text = resources.getString(R.string.numbers_panda)
