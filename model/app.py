@@ -8,7 +8,7 @@ from database_animal import get_data, add_data
 import ast
 
 UPLOAD_FOLDER = r'/home/anubhavlandmark/endangered-critters/model/static'
-#UPLOAD_FOLDER = r'E:\ML\upload\endangered-critters\model\static'
+# UPLOAD_FOLDER = r'E:\ML\upload\endangered-critters\model\static'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
