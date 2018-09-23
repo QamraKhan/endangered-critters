@@ -10,6 +10,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportActionBar?.apply {
+            setDisplayShowHomeEnabled(true)
+            setIcon(R.mipmap.icon2)
+            title = "  Critter Watch"
+        }
+
         val fragment = ItemFragment.newInstance()
         supportFragmentManager.beginTransaction()
                 .replace(R.id.host, fragment)

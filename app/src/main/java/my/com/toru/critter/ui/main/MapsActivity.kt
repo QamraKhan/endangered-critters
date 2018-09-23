@@ -22,6 +22,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
+        supportActionBar?.apply {
+            setDisplayShowHomeEnabled(true)
+            setIcon(R.mipmap.icon2)
+            title = "  Critter Watch"
+        }
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment

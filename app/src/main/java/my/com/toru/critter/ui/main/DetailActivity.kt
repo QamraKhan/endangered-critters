@@ -17,6 +17,12 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        supportActionBar?.apply {
+            setDisplayShowHomeEnabled(true)
+            setIcon(R.mipmap.icon2)
+            title = "  Critter Watch"
+        }
+
         newDB = intent.getSerializableExtra("CRITTER") as CritterNewDB
         if(newDB.imageUrl.contains(".jpg")){
             var imageUrl = newDB.imageUrl.replace("\\","")
