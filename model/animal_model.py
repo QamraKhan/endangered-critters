@@ -93,7 +93,7 @@ def predict(image_path):
     probability = np.max(logreg.predict_proba(test_x_bf))
     print (probability)
     
-    if probability > 0.5:
+    if probability > 0.7:
         print (animals_list[logreg.predict(test_x_bf)[0]])
         return animals_list[logreg.predict(test_x_bf)[0]]
     else:
