@@ -19,17 +19,26 @@ private const val URL = "https://crittercam-baa64.firebaseio.com/"
 class ItemFragment : Fragment() {
 
     private lateinit var listAdapter:ListAdapter
+    private lateinit var progressBar:ProgressBar
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.fragment_item, container, false)
+                              savedInstanceState: Bundle?): View? {
+
+        val view = inflater.inflate(R.layout.fragment_item, container, false)
+        progressBar = view.findViewById<ProgressBar>(R.id.loading_progress)
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Inflate the layout for this fragment
         fab_refresh.setOnClickListener { _ ->
+            progressBar.visibility = View.VISIBLE
             ApiHelper.getData({
+                progressBar.visibility = View.GONE
                 listAdapter.addItems2(it)
 
             }, {
+                progressBar.visibility = View.GONE
                 activity?.let {
                     Toast.makeText(it, "Failed to fetch data", Toast.LENGTH_SHORT).show()
                 }
@@ -46,10 +55,14 @@ class ItemFragment : Fragment() {
             adapter = listAdapter
         }
 
+
+        progressBar.visibility = View.VISIBLE
         ApiHelper.getData({
+            progressBar.visibility = View.GONE
             listAdapter.addItems2(it)
 
         }, {
+            progressBar.visibility = View.GONE
             activity?.let {
                 Toast.makeText(it, "Failed to fetch data", Toast.LENGTH_SHORT).show()
             }
