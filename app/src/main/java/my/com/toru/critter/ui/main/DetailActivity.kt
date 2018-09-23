@@ -7,17 +7,19 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_detail.*
 import my.com.toru.critter.R
+import my.com.toru.critter.model.CritterNewDB
 
 class DetailActivity : AppCompatActivity() {
-    private lateinit var imageUrl:String
+    private lateinit var newDB:CritterNewDB
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        imageUrl = intent.getStringExtra("IMAGE_URL")
-        if(imageUrl.contains(".jpg")){
-            imageUrl = imageUrl.replace("\\","")
+        newDB = intent.getSerializableExtra("CRITTER") as CritterNewDB
+        if(newDB.imageUrl.contains(".jpg")){
+            var imageUrl = newDB.imageUrl.replace("\\","")
             imageUrl = "http://$imageUrl"
             val imageView = findViewById<ImageView>(R.id.detail_img)
             Picasso.get()
@@ -25,6 +27,56 @@ class DetailActivity : AppCompatActivity() {
                     .fit()
                     .into(imageView)
         }
+        newDB.apply {
+            classify_des_txt.text = classification
+            humidity_des_txt.text = humidity
+            temperature_des_txt.text = temperature
+
+            when(classification){
+                "orang_utan"->{
+                    species_des_txt.text = resources.getString(R.string.desc_orang)
+                    conservation_status_txt.text = resources.getString(R.string.conservation_orang)
+                    number_txt.text = resources.getString(R.string.numbers_orang)
+                }
+                "chimpanzee"->{
+                    species_des_txt.text = resources.getString(R.string.desc_chimpanzee)
+                    conservation_status_txt.text = resources.getString(R.string.conservation_chimpanzee)
+                    number_txt.text = resources.getString(R.string.numbers_chimpanzee)
+                }
+
+                "malayan_tiger"->{
+                    species_des_txt.text = resources.getString(R.string.desc_malayan_tiger)
+                    conservation_status_txt.text = resources.getString(R.string.conservation_malayan_tiger)
+                    number_txt.text = resources.getString(R.string.numbers_malayan_tiger)
+                }
+
+                "elephant"->{
+                    species_des_txt.text = resources.getString(R.string.desc_elephant)
+                    conservation_status_txt.text = resources.getString(R.string.conservation_elephant)
+                    number_txt.text = resources.getString(R.string.numbers_elephant)
+                }
+
+                "lion"->{
+                    species_des_txt.text = resources.getString(R.string.desc_lion)
+                    conservation_status_txt.text = resources.getString(R.string.conservation_lion)
+                    number_txt.text = resources.getString(R.string.numbers_lion)
+                }
+
+                "panda"->{
+                    species_des_txt.text = resources.getString(R.string.desc_panda)
+                    conservation_status_txt.text = resources.getString(R.string.conservation_panda)
+                    number_txt.text = resources.getString(R.string.numbers_panda)
+                }
+
+                else->{
+                    species_des_txt.text = resources.getString(R.string.desc_default)
+                    conservation_status_txt.text = resources.getString(R.string.conservation_default)
+                    number_txt.text = resources.getString(R.string.numbers_default)
+                }
+            }
+            where_txt.text = "CritterWatchDevice_001, Sabah, Malaysia"
+        }
+
     }
 
 //    private fun initStorage(){

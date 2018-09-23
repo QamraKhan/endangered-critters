@@ -22,6 +22,9 @@ class ListAdapter(private var critters: ArrayList<CritterNewDB>,
     }
 
     fun addItems2(addedList:ArrayList<CritterNewDB>){
+        if(!critters.isEmpty()){
+            critters.clear()
+        }
         critters.addAll(addedList)
         notifyDataSetChanged()
     }

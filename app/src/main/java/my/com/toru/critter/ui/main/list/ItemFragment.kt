@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_item.*
 import my.com.toru.critter.R
@@ -19,20 +20,29 @@ class ItemFragment : Fragment() {
 
     private lateinit var listAdapter:ListAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item, container, false)
-    }
+                              savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.fragment_item, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Inflate the layout for this fragment
+        fab_refresh.setOnClickListener { _ ->
+            ApiHelper.getData({
+                listAdapter.addItems2(it)
+
+            }, {
+                activity?.let {
+                    Toast.makeText(it, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
         listAdapter = ListAdapter(ArrayList()) {
             val intent = Intent(activity, DetailActivity::class.java)
-            intent.putExtra("IMAGE_URL", it.imageUrl)
+            intent.putExtra("CRITTER", it)
             activity?.startActivity(intent)
         }
         item_rcv.apply {
-            layoutManager = GridLayoutManager(view.context, 3)
+            layoutManager = GridLayoutManager(activity, 3)
             adapter = listAdapter
         }
 
@@ -44,30 +54,6 @@ class ItemFragment : Fragment() {
                 Toast.makeText(it, "Failed to fetch data", Toast.LENGTH_SHORT).show()
             }
         })
-
-//        val database = FirebaseDatabase.getInstance()
-//        val myRef = database.reference
-//        myRef.child("testdate").addChildEventListener(object:ChildEventListener{
-//            override fun onCancelled(p0: DatabaseError) {}
-//
-//            override fun onChildMoved(p0: DataSnapshot, p1: String?) {}
-//
-//            override fun onChildChanged(p0: DataSnapshot, p1: String?) {}
-//
-//            override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
-//                val eachModel = dataSnapshot.getValue(CritterDB::class.java)
-//                Log.w("LOG", "date: " + eachModel?.date)
-//                Log.w("LOG", "time: " + eachModel?.time)
-//
-//                eachModel?.time = "https://firebasestorage.googleapis.com/v0/b/crittercam-baa64.appspot.com/o/photos%2F2018.09.23-010052.jpg?alt=media&token=968ea1a7-7ed9-4332-876c-52340a40fbb9"
-//
-//                eachModel?.let {
-//                    listAdapter.addItem(it)
-//                }
-//            }
-//
-//            override fun onChildRemoved(p0: DataSnapshot) {}
-//        })
     }
 
     companion object {

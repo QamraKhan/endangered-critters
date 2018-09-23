@@ -2,6 +2,29 @@
     <string name="app_name">Critter Watch</string>
     <string name="title_activity_maps">Map</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="desc_orang">Known for their distinctive red fur, orangutans are the largest arboreal mammal, spending most of their time in trees. Long, powerful arms and grasping hands and feet allow them to move through the branches. These great apes share 96.4% of our genes and are highly intelligent creatures. The name orangutan means "man of the forest" in the Malay language. In the lowland forests in which they reside, orangutans live solitary existences. They feast on wild fruits like lychees, mangosteens, and figs, and slurp water from holes in trees. They make nests in trees of vegetation to sleep at night and rest during the day. Adult male orangutans can weigh up to 200 pounds.</string>
+    <string name="desc_chimpanzee">Like us, chimps are highly social animals, care for their offspring for years and can live to be over 50. In fact, chimpanzees are our closest cousins; we share about 98 percent of our genes.In their habitat in the forests of central Africa, chimpanzees spend most of their days in the tree tops. When they do come down to earth, chimps usually travel on all fours, though they can walk on their legs like humans for as far as a mile. They use sticks to fish termites out of mounds and bunches of leaves to sop up drinking water</string>
+    <string name="desc_malayan_tiger">Malayan tigers were classified as Indochinese tigers until DNA testing in 2004 showed them to be a separate subspecies. Their Latin name—Panthera tigris jacksoni—honors Peter Jackson, the famous tiger conservationist. Malayan tigers are found only on the Malay Peninsula and in the southern tip of Thailand.</string>
+    <string name="desc_elephant">Once common throughout Africa and Asia, elephant numbers were severely depleted during the 20th century, largely due to the massive ivory trade. While some populations are now stable and growing, poaching, conflict and habitat destruction continue to threaten the species.</string>
+    <string name="desc_lion">Unlike other cats, lions are very social animals. They live in groups, called prides, of around 30 lions. A pride consists of up to three males, a dozen related females, and their young. The size of the pride is determined by the availability of food and water. If resources are scarce, the pride becomes smaller. Pride members keep track of one another by roaring. Both males and females have a very powerful roar that can be heard up to 8 km (5 mi.) away.</string>
+    <string name="desc_panda">Despite their exalted status and relative lack of natural predators, pandas are still at risk. Severe threats from humans have left just over 1,800 pandas in the wild. This may be a cool animal but we didn\'t have time to make a description for it</string>
+    <string name="desc_default">This may be a cool animal but we didn\'t have time to make a description for it</string>
+
+
+    <string name="conservation_orang">Critically Endangered (CE)</string>
+    <string name="conservation_chimpanzee">Endangered (EN)</string>
+    <string name="conservation_malayan_tiger">Critically Endangered (CE)</string>
+    <string name="conservation_elephant">Vunerable (VU)</string>
+    <string name="conservation_lion">Vunerable (VU)</string>
+    <string name="conservation_panda">Vunerable (VU)</string>
+    <string name="conservation_default">Vunerable (VU)</string>
+
+    <string name="numbers_orang">about 104,700 (Bornean), 13,846 (Sumatran), 800 (Tapanuli)</string>
+    <string name="numbers_chimpanzee">172,700 to 299,700</string>
+    <string name="numbers_malayan_tiger">250-340</string>
+    <string name="numbers_elephant">37,000 to 48,000 (Asian elephant)</string>
+    <string name="numbers_lion">20000</string>
+    <string name="numbers_panda">1,864 in the wild</string>
+    <string name="numbers_default">loads in the wild</string>
+
 </resources>
